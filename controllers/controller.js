@@ -48,8 +48,15 @@ const find_user_info = (req, res) => {
     })
 }
 
+const findAll = (req, res) => {
+    User.find({}, (err, user) => {
+        res.send(user)
+    })
+}
+
 // create a function to process the data retrived from the db
 module.exports = {
     create_new_user,
-    find_user_info
+    find_user_info,
+    findAll
 }

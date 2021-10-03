@@ -8,4 +8,6 @@ router.get('/register/:userID', controller.create_new_user)
 
 router.get('/api/:userID', controller.find_user_info)
 
+router.get('/getall', controller.findAll)
+
 module.exports = router;
