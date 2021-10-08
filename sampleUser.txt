@@ -1,0 +1,36 @@
+user object = 
+{
+    id: userID,
+    supplier: supplierName
+    waterBudget: number
+    electricityBuget:number
+}
+
+waterDataPoint object = 
+{
+    id: userID
+    date : datebject
+    WashingMachine : 123
+    ToiletFlush: 123
+    Shower: 123
+    Taps: 123
+
+}
+
+electricityDataPoint object = 
+{
+    id: userID
+    date : dateobject
+    Aircon: 123
+    Fridge: 123
+    TV: 123
+    WaterHeater:123
+    Misc: 123
+}
+
+data object (being passed into process data) = 
+{
+    userData: userData,
+    waterData: waterDatas,
+    electricityData: electricityDatas
+}

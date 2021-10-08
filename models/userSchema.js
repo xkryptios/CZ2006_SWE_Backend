@@ -1,35 +1,26 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-// const dataPointSchema = new Schema({
-//     date: {
-//         type: Date,
-//         required: true
-//     },
-//     consumption: {
-//         type: Number,
-//         required: true
-//     }
-// })
-
 const userSchema = new Schema({
     id: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    waterData: {
-        //the array is intended to be of DataPoints instead
-        type: [{}]
+    electricitySupplier: {
+        type: String,
+        required: false
     },
-    ElectricityData: {
-        //the array is intended to be of DataPoints instead
-        type: [{}]
+    waterBudget: {
+        type: Number,
+        required: false
+    },
+    electricityBudget: {
+        type: Number,
+        required: false
     }
 
-    // { timestamps: true }}
-
-
-}, { timestamps: true });
+});
 
 const User = mongoose.model("User", userSchema, 'Users');
 module.exports = User
