@@ -81,7 +81,14 @@ const processData = (data) => {
 	console.log("Water remaining: " + waterRemaining + "Litres")
 	console.log("Electricity remaining: " + electricityRemaining + "KWh")
 	
-	
+	return ({
+        waterUsage: waterUsage,
+        waterCost: waterCost,
+        electricityUsage: electricityUsage,
+		electricityCost: electricityCost,
+		waterRemaining: waterRemaining,
+		electricityRemaining: electricityRemaining
+    })
 	
 	
 	
