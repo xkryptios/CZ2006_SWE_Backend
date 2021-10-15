@@ -34,3 +34,26 @@ data object (being passed into process data) =
     waterData: waterDatas,
     electricityData: electricityDatas
 }
+
+
+
+//### TO DO::::
+sending to the front end object:
+{
+	userData:
+	waterUsageThisMonth:
+	electricityUsageThisMonth:
+	CostOfWaterThisMonth:
+	CostOfElectricityThisMonth:
+	waterRemaining in units<< calc frm user.budgets 
+	electricityRemaining
+	
+	**tips
+	
+}
+
+
+Water usage: 14748.568341804968
+Water cost: 40.41107725654561
+Electricity usage: 19571.516558236504
+Electricity cost: 19571.516558236504

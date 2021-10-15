@@ -18,8 +18,8 @@ router.get('/setWaterBudget/:userID/:quantity', Setter.setWaterBudget)
 router.get('/setElectricityBudget/:userID/:quantity', Setter.setElectricityBudget)
 
 router.get('/api/:userID', Query.find_user_info)
-
-
+router.get('/apidates/:userID', Query.find_user_info_dated)
+//router.get('/waterapidates/:userID', Query.find_user_info_water_dated)
 
 //testing functions
 router.get('/getall', Query.findAll)
@@ -61,5 +61,55 @@ router.get('/createdata/:userID', async (req, res) => {
     res.send({ waterData: waterData, electricityData: electricityData })
 })
 
+//Trev test insert fixed data.
+router.get('/testdata/:userID', async (req, res) =>{
+	const userID = req.params.userID
+	
+	const waterDataPoint = new WaterDataPoint({
+		id: userID,
+		date: new Date("2021-09-01T12:00:00Z"),
+		WashingMachine: Number(100),
+        ToiletFlush: Number(200),
+        Shower: Number(300),
+        Taps: Number(400)
+    })
+	const waterData = await waterDataPoint.save()
+
+    const electricityDataPoint = new ElectricityDataPoint({
+        id: userID,
+        date: new Date("2021-11-01T12:00:00Z"),
+        Aircon: Number(101),
+        Fridge: Number(201),
+        TV: Number(301),
+        WaterHeater: Number(401),
+        Misc: Number(501)
+    })
+    const electricityData = await electricityDataPoint.save()
+
+    res.send({ waterData: waterData, electricityData: electricityData })
+})
+
+//see all data.
+router.get('/seedata/:userID', async (req, res) =>{
+	const userID = req.params.userID
+	
+	const waterDataPoint = new getWaterDatas(userID)
+	const electricityDataPoint = new getElectricityDatas(userID)
+	
+	res.send({userData: userData, waterData: waterDataPoint,
+	electricityData: electricityDataPoint})
+})	
+
+
+//test to find data after certain date
+router.get('/datadate/:userID', async (req, res) =>{
+	const userID = req.params.userID
+	
+	const waterDataPoint = new getWaterDatas(userID)
+	const electricityDataPoint = new getElectricityDatas(userID)
+	
+	res.send({userData: userData, waterData: waterDataPoint,
+	electricityData: electricityDataPoint})
+})	
 
 module.exports = router;
