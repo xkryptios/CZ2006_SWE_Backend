@@ -1,0 +1,23 @@
+1. create a stash of tips and conditons (no need to store in database)
+tip = {
+    tipDetails : String,
+    condition : Number
+}
+
+waterTips = {
+    washingMachineTips : [tip1,tip2,tip3...]
+    toiletFlushTips : [tip1,tip2,tip3...]
+    showerTips : [tip1,tip2,tip3...]
+    tapsTips : [tip1,tip2,tip3...]
+}
+electricityTips = {
+    airconTips : [tip1,tip2,tip3...],
+    fridgeTips : [tip1,tip2,tip3...],
+    TVTips : [tip1,tip2,tip3...],
+    waterHeaterTips : [tip1,tip2,tip3...],
+    otherTips: [tip1,tip2,tip3...]
+}
+
+2. "randomise" tips and include suitable tips for user api call for info.
+
+3. finishup setter functions for user's budget limit and supplier

@@ -29,7 +29,7 @@ const getWaterDatas = async (userID) => {
 //trev test
 const getWaterDatasDated = async (userID) => {
     return new Promise((resolve, reject) => {
-        WaterDataPoint.find({ id: userID, date: {$gte: checkDate()} }, (err, result) => {
+        WaterDataPoint.find({ id: userID, date: { $gte: checkDate() } }, (err, result) => {
             if (err) {
                 reject(err)
             } else {
@@ -54,7 +54,7 @@ const getElectricityDatas = async (userID) => {
 
 const getElectricityDatasDated = async (userID) => {
     return new Promise((resolve, reject) => {
-        ElectricityDataPoint.find({ id: userID, date: {$gte: checkDate()} }, (err, result) => {
+        ElectricityDataPoint.find({ id: userID, date: { $gte: checkDate() } }, (err, result) => {
             if (err) {
                 reject(err)
             } else {
@@ -98,10 +98,14 @@ async function getINFOdated(userID) {
 const find_user_info = async (req, res) => {
     const userID = req.params.userID
     const data = await getINFO(userID)
-    processData(data)
+    const processedData = processData(data)
     //res.send("water goes brrr")
-	res.send({ userData: data.userData, waterData: data.waterData,
-	electricityData: data.electricityData })
+    res.send({
+        userData: data.userData,
+        waterData: data.waterData,
+        electricityData: data.electricityData,
+        processedData: processedData
+    })
 }
 
 //trev test
@@ -110,18 +114,20 @@ const find_user_info_dated = async (req, res) => {
     const data = await getINFOdated(userID)
     processData(data)
     //res.send("water goes brrr")
-	res.send({ userData: data.userData, waterData: data.waterData,
-	electricityData: data.electricityData })
+    res.send({
+        userData: data.userData, waterData: data.waterData,
+        electricityData: data.electricityData
+    })
 }
 
-function checkDate(){
-	const currentDate = new Date()
-	var current_month = currentDate.getMonth()
-	var current_day = currentDate.getDate()
-	var current_year = currentDate.getFullYear()
-	const point = (current_year + "-" + current_month + "-" + current_day)
-	//const point = new Date("2021-10-11T00:00:00.000Z")
-	return point
+function checkDate() {
+    const currentDate = new Date()
+    var current_month = currentDate.getMonth()
+    var current_day = currentDate.getDate()
+    var current_year = currentDate.getFullYear()
+    const point = (current_year + "-" + current_month + "-" + current_day)
+    //const point = new Date("2021-10-11T00:00:00.000Z")
+    return point
 }
 
 
@@ -140,6 +146,6 @@ const findAll = (req, res) => {
 
 module.exports = {
     find_user_info,
-	find_user_info_dated,
+    find_user_info_dated,
     findAll
 }
