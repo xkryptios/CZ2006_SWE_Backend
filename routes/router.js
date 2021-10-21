@@ -62,18 +62,18 @@ router.get('/createdata/:userID', async (req, res) => {
 })
 
 //Trev test insert fixed data.
-router.get('/testdata/:userID', async (req, res) =>{
-	const userID = req.params.userID
-	
-	const waterDataPoint = new WaterDataPoint({
-		id: userID,
-		date: new Date("2021-09-01T12:00:00Z"),
-		WashingMachine: Number(100),
+router.get('/testdata/:userID', async (req, res) => {
+    const userID = req.params.userID
+
+    const waterDataPoint = new WaterDataPoint({
+        id: userID,
+        date: new Date("2021-09-01T12:00:00Z"),
+        WashingMachine: Number(100),
         ToiletFlush: Number(200),
         Shower: Number(300),
         Taps: Number(400)
     })
-	const waterData = await waterDataPoint.save()
+    const waterData = await waterDataPoint.save()
 
     const electricityDataPoint = new ElectricityDataPoint({
         id: userID,
@@ -90,26 +90,30 @@ router.get('/testdata/:userID', async (req, res) =>{
 })
 
 //see all data.
-router.get('/seedata/:userID', async (req, res) =>{
-	const userID = req.params.userID
-	
-	const waterDataPoint = new getWaterDatas(userID)
-	const electricityDataPoint = new getElectricityDatas(userID)
-	
-	res.send({userData: userData, waterData: waterDataPoint,
-	electricityData: electricityDataPoint})
-})	
+router.get('/seedata/:userID', async (req, res) => {
+    const userID = req.params.userID
+
+    const waterDataPoint = new getWaterDatas(userID)
+    const electricityDataPoint = new getElectricityDatas(userID)
+
+    res.send({
+        userData: userData, waterData: waterDataPoint,
+        electricityData: electricityDataPoint
+    })
+})
 
 
 //test to find data after certain date
-router.get('/datadate/:userID', async (req, res) =>{
-	const userID = req.params.userID
-	
-	const waterDataPoint = new getWaterDatas(userID)
-	const electricityDataPoint = new getElectricityDatas(userID)
-	
-	res.send({userData: userData, waterData: waterDataPoint,
-	electricityData: electricityDataPoint})
-})	
+router.get('/datadate/:userID', async (req, res) => {
+    const userID = req.params.userID
+
+    const waterDataPoint = new getWaterDatas(userID)
+    const electricityDataPoint = new getElectricityDatas(userID)
+
+    res.send({
+        userData: userData, waterData: waterDataPoint,
+        electricityData: electricityDataPoint
+    })
+})
 
 module.exports = router;
