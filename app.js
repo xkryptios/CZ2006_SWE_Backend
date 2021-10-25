@@ -1,6 +1,9 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const router = require("./routes/router")
+
+// const dataAdder = require("./controllers/DataPointAdder")
+
 require('dotenv').config()
 const app = express();
 
@@ -11,7 +14,10 @@ mongoose.connect(process.env.URI,
         // useFindAndModify: false,
         useUnifiedTopology: true
     })
-    .then((results) => console.log("connected to the db"))
+    .then((results) => {
+        console.log("connected to the db")
+        // dataAdder();
+    })
     .catch((err) => console.log(err))
 
 
