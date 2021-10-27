@@ -10,19 +10,19 @@ const WaterDataPointSchema = new Schema({
         type: Date,
         required: true
     },
-    WashingMachine: {
+    washingMachine: {
         type: Number,
         required: true
     },
-    ToiletFlush: {
+    toiletFlush: {
         type: Number,
         required: true
     },
-    Shower: {
+    shower: {
         type: Number,
         required: true
     },
-    Taps: {
+    taps: {
         type: Number,
         required: true
     }

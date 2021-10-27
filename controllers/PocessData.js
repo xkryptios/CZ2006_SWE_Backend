@@ -1,8 +1,8 @@
 const Query = require("../controllers/QueryController")
 
 const processData = (data) => {
-	console.log(typeof (data.userData))
-	console.log(data.userData)
+	// console.log(typeof (data.userData))
+	// console.log(data.userData)
 	// console.log(data.waterData)
 	// console.log(data.electricityData)
 
@@ -18,10 +18,10 @@ const processData = (data) => {
 	for (var bleh in data.waterData) {
 
 		if (data.waterData[bleh].date >= point) {
-			waterUsage += data.waterData[bleh].WashingMachine
-			waterUsage += data.waterData[bleh].ToiletFlush
-			waterUsage += data.waterData[bleh].Shower
-			waterUsage += data.waterData[bleh].Taps
+			waterUsage += data.waterData[bleh].washingMachine
+			waterUsage += data.waterData[bleh].toiletFlush
+			waterUsage += data.waterData[bleh].shower
+			waterUsage += data.waterData[bleh].taps
 		}
 	}
 
@@ -45,11 +45,11 @@ const processData = (data) => {
 	var electricityUsage = 0.0
 	for (const bleh in data.electricityData) {
 		if (data.electricityData[bleh].date >= point) {
-			electricityUsage += data.electricityData[bleh].Aircon
-			electricityUsage += data.electricityData[bleh].Fridge
-			electricityUsage += data.electricityData[bleh].TV
-			electricityUsage += data.electricityData[bleh].WaterHeater
-			electricityUsage += data.electricityData[bleh].Misc
+			electricityUsage += data.electricityData[bleh].aircon
+			electricityUsage += data.electricityData[bleh].fridge
+			electricityUsage += data.electricityData[bleh].tv
+			electricityUsage += data.electricityData[bleh].waterHeater
+			electricityUsage += data.electricityData[bleh].misc
 		}
 	}
 

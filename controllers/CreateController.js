@@ -52,20 +52,20 @@ const createStatic = async (userID) => {
         waterArray.push({
             id: userID,
             date: currentDate,
-            WashingMachine: Number(Math.random() * 100 + 1),
-            ToiletFlush: Number(Math.random() * 100 + 1),
-            Shower: Number(Math.random() * 100 + 1),
-            Taps: Number(Math.random() * 100 + 1)
+            washingMachine: Number(Math.random() * 100 + 1),
+            toiletFlush: Number(Math.random() * 100 + 1),
+            shower: Number(Math.random() * 100 + 1),
+            taps: Number(Math.random() * 100 + 1)
         })
         electricityArray.push({
 
             id: userID,
             date: currentDate,
-            Aircon: Number(Math.random() * 100 + 1),
-            Fridge: Number(Math.random() * 100 + 1),
-            TV: Number(Math.random() * 100 + 1),
-            WaterHeater: Number(Math.random() * 100 + 1),
-            Misc: Number(Math.random() * 100 + 1)
+            aircon: Number(Math.random() * 100 + 1),
+            fridge: Number(Math.random() * 100 + 1),
+            tv: Number(Math.random() * 100 + 1),
+            waterHeater: Number(Math.random() * 100 + 1),
+            misc: Number(Math.random() * 100 + 1)
 
         })
     }
@@ -77,20 +77,20 @@ const createStatic = async (userID) => {
         waterArray.push({
             id: userID,
             date: pastDate,
-            WashingMachine: Number(Math.random() * 100 + 1),
-            ToiletFlush: Number(Math.random() * 100 + 1),
-            Shower: Number(Math.random() * 100 + 1),
-            Taps: Number(Math.random() * 100 + 1)
+            washingMachine: Number(Math.random() * 100 + 1),
+            toiletFlush: Number(Math.random() * 100 + 1),
+            shower: Number(Math.random() * 100 + 1),
+            taps: Number(Math.random() * 100 + 1)
         })
         electricityArray.push({
 
             id: userID,
             date: pastDate,
-            Aircon: Number(Math.random() * 100 + 1),
-            Fridge: Number(Math.random() * 100 + 1),
-            TV: Number(Math.random() * 100 + 1),
-            WaterHeater: Number(Math.random() * 100 + 1),
-            Misc: Number(Math.random() * 100 + 1)
+            aircon: Number(Math.random() * 100 + 1),
+            fridge: Number(Math.random() * 100 + 1),
+            tv: Number(Math.random() * 100 + 1),
+            waterHeater: Number(Math.random() * 100 + 1),
+            misc: Number(Math.random() * 100 + 1)
 
         })
     }

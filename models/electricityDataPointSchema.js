@@ -10,23 +10,23 @@ const ElectricityDataPointSchema = new Schema({
         type: Date,
         required: true
     },
-    Aircon: {
+    aircon: {
         type: Number,
         required: true
     },
-    Fridge: {
+    fridge: {
         type: Number,
         required: true
     },
-    TV: {
+    tv: {
         type: Number,
         required: true
     },
-    WaterHeater: {
+    waterHeater: {
         type: Number,
         required: true
     },
-    Misc: {
+    misc: {
         type: Number,
         required: true
     }
