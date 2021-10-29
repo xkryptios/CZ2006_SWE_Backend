@@ -59,12 +59,7 @@ const find_user_info = async (req, res) => {
 
     const processedData = processData(data)
     //res.send("water goes brrr")
-    res.send({
-        userData: data.userData,
-        waterData: data.waterData,
-        electricityData: data.electricityData,
-        summary: processedData
-    })
+    res.send(processedData)
 }
 
 const findAll = (req, res) => {

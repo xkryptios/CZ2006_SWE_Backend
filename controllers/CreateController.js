@@ -69,8 +69,8 @@ const createStatic = async (userID) => {
 
         })
     }
-    //create 11 datapoints (first hr of each month indicate )
-    for (let i = 1; i < 11; i++) {
+    //create 12 datapoints (first hr of each month indicate )
+    for (let i = 1; i <= 12; i++) {
 
         let pastDate = new Date(octDate.getTime() - (i * 43200 * 60000))
         // console.log(pastDate.toString())
@@ -103,23 +103,6 @@ const createStatic = async (userID) => {
         const electricityDP = new ElectricityDataPoint(item)
         await electricityDP.save()
     }
-
-    // const electricityDP = new ElectricityDataPoint(
-    //     {
-
-    //         id: userID,
-    //         date: octDate,
-    //         Aircon: Number(Math.random() * 100 + 1),
-    //         Fridge: Number(Math.random() * 100 + 1),
-    //         TV: Number(Math.random() * 100 + 1),
-    //         WaterHeater: Number(Math.random() * 100 + 1),
-    //         Misc: Number(Math.random() * 100 + 1)
-
-    //     }
-    // )
-    // await electricityDP.save()
-
-
 }
 
 module.exports = {
