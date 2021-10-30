@@ -80,7 +80,14 @@ const processData = (data) => {
 		if (item.date >= currentDate)
 			currentmonthwater.push(item)
 		else
-			monthlywater.push(item)
+
+			monthlywater.push({
+				date: item.date,
+				washingMachine: item.washingMachine,
+				toiletFlush: item.toiletFlush,
+				shower: item.shower,
+				taps: item.taps
+			})
 	}
 	octmonthwaterdata = {
 		date: currentDate,
@@ -95,13 +102,22 @@ const processData = (data) => {
 		octmonthwaterdata.shower += item.shower
 		octmonthwaterdata.taps += item.taps
 	}
-	monthlywater.push(octmonthwaterdata)
+	monthlywater.unshift(octmonthwaterdata)
+	monthlywater.reverse()
+	monthlywater.shift()
 
 	for (let item of data.electricityData) {
 		if (item.date >= currentDate)
 			currentmonthelectricity.push(item)
 		else
-			monthlyelectricity.push(item)
+			monthlyelectricity.push({
+				date: item.date,
+				aircon: item.aircon,
+				fridge: item.fridge,
+				tv: item.tv,
+				waterHeater: item.waterHeater,
+				misc: item.misc
+			})
 	}
 	octmonthelectricitydata = {
 		date: currentDate,
@@ -118,14 +134,40 @@ const processData = (data) => {
 		octmonthelectricitydata.waterHeater += item.waterHeater
 		octmonthelectricitydata.misc += item.misc
 	}
-	monthlyelectricity.push(octmonthelectricitydata)
+	monthlyelectricity.unshift(octmonthelectricitydata)
+	monthlyelectricity.reverse()
+	monthlyelectricity.shift()
 	//
 
 	let sortedWater = currentmonthwater.slice().sort((a, b) => b.date - a.date)
 	let sortedElectricity = currentmonthelectricity.slice().sort((a, b) => b.date - a.date)
 
-	const hourlywater = sortedWater.slice(0, 24)
-	const hourlyelectricity = sortedElectricity.slice(0, 24)
+	const hourlywaterPreprocess = sortedWater.slice(0, 24)
+	let hourlywater = []
+	hourlywaterPreprocess.forEach((item) => {
+		hourlywater.push({
+			date: item.date,
+			washingMachine: item.washingMachine,
+			toiletFlush: item.toiletFlush,
+			shower: item.shower,
+			taps: item.taps
+		})
+	})
+
+
+	const hourlyelectricityPreprocess = sortedElectricity.slice(0, 24)
+	let hourlyelectricity = []
+	hourlyelectricityPreprocess.forEach((item) => {
+		hourlyelectricity.push({
+			date: item.date,
+			aircon: item.aircon,
+			fridge: item.fridge,
+			tv: item.tv,
+			waterHeater: item.waterHeater,
+			misc: item.misc
+		})
+	})
+
 
 	let dailywater = []
 	let dailyelectricity = []
@@ -166,10 +208,6 @@ const processData = (data) => {
 		dailyelectricity.push(tempelectricitystruct)
 	}
 
-	// hourlyelectricity.forEach((item) => {
-	// 	console.log(item.date.toString())
-	// })
-	// console.log(hourlyelectricity.length)
 
 
 
@@ -180,6 +218,36 @@ const processData = (data) => {
 	// console.log("Electricity cost: " + electricityCost)
 	// console.log("Water remaining: " + waterRemaining + "Litres")
 	// console.log("Electricity remaining: " + electricityRemaining + "KWh")
+
+	hourlyelectricity.reverse()
+	hourlywater.reverse()
+
+
+	//convert all date to its respective values for display on frontend
+
+	monthlywater.forEach((item) => {
+		item.date = item.date.getMonth() + 1
+	})
+	monthlyelectricity.forEach((item) => {
+		item.date = item.date.getMonth() + 1
+	})
+	dailywater.forEach((item) => {
+		item.date = item.date.getDate()
+	})
+	dailyelectricity.forEach((item) => {
+		item.date = item.date.getDate()
+	})
+	hourlywater.forEach((item) => {
+		item.date = item.date.getHours()
+	})
+	hourlyelectricity.forEach((item) => {
+		item.date = item.date.getHours()
+	})
+
+	// monthlyelectricity.forEach((item) => {
+	// 	console.log(item.date + item.aircon)
+	// })
+	console.log(hourlyelectricity)
 
 
 	return_object = {

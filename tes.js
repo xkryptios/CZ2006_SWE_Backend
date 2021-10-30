@@ -1,16 +1,17 @@
 
-const schedule = () => {
-    const time = new Date();
-    console.log(time);
 
-    // setTimeout(() => {
-    //     console.log("inside callback fucntion of setimeout" + new Date())
-    // }, 5000);
-    console.log("inside setinterval" + new Date())
-
-    setInterval(() => {
-        console.log("inside setinterval" + new Date())
-    }, 3000);
+// var date = new Date();
+let arr = []
+for (let i = 0; i < 3; i++) {
+    arr.push({
+        id: i,
+        date: new Date
+    })
 }
+console.log(arr)
 
-schedule();
+arr.forEach((item) => {
+    item = 10
+})
+
+console.log(arr)
