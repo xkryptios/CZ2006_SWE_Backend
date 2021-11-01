@@ -10,7 +10,7 @@ const processData = (data) => {
 
 	var waterUsage = Number(0.0)
 
-	for (var value in data.waterData) {
+	for (let value in data.waterData) {
 		if (data.waterData[value].date >= point) {
 			waterUsage += data.waterData[value].washingMachine
 			waterUsage += data.waterData[value].toiletFlush
@@ -18,6 +18,9 @@ const processData = (data) => {
 			waterUsage += data.waterData[value].taps
 		}
 	}
+	console.log("water used: " + waterUsage)
+	// console.log("water remain: " + waterRemaining)
+	// console.log("water used: " + waterUsage)
 
 
 
@@ -39,22 +42,22 @@ const processData = (data) => {
 			eRate = 1.0;
 	}
 
-	var electricityUsage = 0.0
-	for (const bleh in data.electricityData) {
-		if (data.electricityData[bleh].date >= point) {
-			electricityUsage += data.electricityData[bleh].aircon
-			electricityUsage += data.electricityData[bleh].fridge
-			electricityUsage += data.electricityData[bleh].tv
-			electricityUsage += data.electricityData[bleh].waterHeater
-			electricityUsage += data.electricityData[bleh].misc
+	var electricityUsage = Number(0.0)
+	// console.log(data.electricityData)
+	for (let value in data.electricityData) {
+		if (data.electricityData[value].date >= point) {
+			electricityUsage += data.electricityData[value].aircon
+			electricityUsage += data.electricityData[value].fridge
+			electricityUsage += data.electricityData[value].tv
+			electricityUsage += data.electricityData[value].waterHeater
+			electricityUsage += data.electricityData[value].misc
 		}
 	}
 
 
 	//calculate cost of water consumption in current month
-	var waterCost = 2.74 * waterUsage / 1000
+	var waterCost = 0.00121 * waterUsage
 	var electricityCost = eRate * electricityUsage
-
 	var waterRemaining
 	if (data.userData.waterBudget == 0)
 		waterRemaining = 0
@@ -62,10 +65,13 @@ const processData = (data) => {
 		waterRemaining = data.userData.waterBudget - waterUsage
 
 	var electricityRemaining
-	if (data.userData.electricityBudget == 0)
+	if (data.userData.electricityBudget == 0) {
 		electricityRemaining = 0
-	else
-		electricityRemaining = data.userData.electricityBudget - waterUsage
+
+	}
+	else {
+		electricityRemaining = data.userData.electricityBudget - electricityUsage
+	}
 
 
 
@@ -247,7 +253,7 @@ const processData = (data) => {
 	// monthlyelectricity.forEach((item) => {
 	// 	console.log(item.date + item.aircon)
 	// })
-	console.log(hourlyelectricity)
+	// console.log(hourlyelectricity)
 
 
 	return_object = {

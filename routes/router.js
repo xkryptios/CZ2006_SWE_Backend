@@ -22,7 +22,7 @@ router.get('/api/:userID', Query.find_user_info)
 //testing functions
 router.get('/getall', Query.findAll)
 router.get('/dropall', async (req, res) => {
-    await User.collection.drop()
+    // await User.collection.drop()
     await WaterDataPoint.collection.drop()
     await ElectricityDataPoint.collection.drop()
     res.send("usr deleted")
